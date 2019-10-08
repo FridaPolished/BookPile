@@ -32,7 +32,7 @@ export const login = user => dispatch =>  (
             )
     ));
 export const logout = () => dispatch => (
-        SessionApiUtil.logout().then(user => dispatch(logoutCurrentUser()))
-    );
+        SessionApiUtil.logout().then(user => dispatch(logoutCurrentUser())
+    ));
 
 

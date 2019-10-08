@@ -4,9 +4,9 @@ import React from "react";
 const Greeting =({ currentUser, logout}) => {
     const sessionLinks = () => (
         <div>
-            <Link to="/signup">Sign Up</Link>
+            {/* <Link to="/signup">Sign Up</Link>
              &nbsp;or&nbsp; 
-            <Link to="/login">Log In</Link>
+            <Link to="/login">Log In</Link> */}
         </div>
     )
 
