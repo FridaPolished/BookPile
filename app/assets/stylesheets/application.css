@@ -16,11 +16,21 @@
 
  body {
     background-color: #f3f0e4;
+    margin-left: 10%;
+    margin-right: 10%;
  }
 
  .login-form-container {
     display: flex;
     justify-content: space-evenly;
+ }
+ .signup-form-container {
+    display: flex;
+    justify-content: space-evenly;
+ }
+
+ .signup-form-container p {
+    font-weight: bold;
  }
 
  .login-form {
@@ -38,7 +48,6 @@
     padding: 10px;
     font-size: 17px;
     margin: 0 auto;
-    background-color: red
  }
   
  .session-submit-login {
@@ -46,7 +55,8 @@
     color: white;
     border-color: black;
     border-radius: 5px;
-    width: min-content;
+    width: max-content;
+    padding: 5px;
  }
  .session-submit-signup {
     background-color: gold;
@@ -60,9 +70,15 @@
      padding: 5px;
      margin: 5px;
  }
- .login-input {
-     padding: 5px;
-     margin: 5px;
+ .login-signup {
+   padding: 5px;
+   margin: 5px;
+   width: 200px;
+ }
+ .login-login {
+    display: inline-flex;
+    padding: 5px;
+    margin: 5px;
  }
 
  .logout-button {
@@ -96,3 +112,7 @@
    border-block-end: solid #dd2a8a;
 }
    
+#sampleuser {
+   display: block;
+   padding: 10px;
+}
