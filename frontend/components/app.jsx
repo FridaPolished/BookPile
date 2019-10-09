@@ -10,13 +10,20 @@ const App = () => (
     <div>
         <header className='app-header'>
             <h1>Welcome to BookPile</h1>
+            <div>
             {/* <img src={logo} alt="Books and stuff" /> */}
+            </div>
+            <div className='nav-header'>
             <GreetingContainer />
+        {/* <LoginFormContainer /> */}
+            </div>
         </header>
-        <LoginFormContainer />
-        <SignupFormContainer />
-         {/* <AuthRoute exact path="/login" component={LoginFormContainer} />
-         <AuthRoute  exact path="/signup" component={SignupFormContainer} /> */}
+        {/* <div>
+        <SignupFormContainer /> 
+        </div> */}
+         
+         <AuthRoute exact path="/login" component={LoginFormContainer} />
+         <AuthRoute  exact path="/signup" component={SignupFormContainer} />
     </div>
 
 );

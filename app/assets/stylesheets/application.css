@@ -64,3 +64,35 @@
      padding: 5px;
      margin: 5px;
  }
+
+ .logout-button {
+   background-color: rgb(56, 32, 2);
+   color: white;
+   border-color: black;
+   border-radius: 5px;
+   width: max-content;
+   display: flex;
+   padding: 10px;
+   font-weight: bold;
+   font-size: 10px;
+}
+
+.navbar {
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+}
+
+.navbar h2  button{
+   display: flex;
+   margin-right: 10px;
+}
+
+.app-header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   
+   border-block-end: solid #dd2a8a;
+}
+   
