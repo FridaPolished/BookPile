@@ -4,7 +4,7 @@ import LoginFormContainer from './session_form/login_form_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import {Route} from 'react-router-dom';
 import {AuthRoute} from '../util/route_util';
-// import logo from '../../app/assets/images/bookpilelogo';
+// import logo from '../../app/assets/images/bookpilelogo.png';
 
 const App = () => (
     <div>
@@ -12,8 +12,8 @@ const App = () => (
             <h1>Welcome to BookPile</h1>
             {/* <img src={logo} alt="Books and stuff" /> */}
             <GreetingContainer />
-        <LoginFormContainer />
         </header>
+        <LoginFormContainer />
         <SignupFormContainer />
          {/* <AuthRoute exact path="/login" component={LoginFormContainer} />
          <AuthRoute  exact path="/signup" component={SignupFormContainer} /> */}
