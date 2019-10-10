@@ -12,15 +12,12 @@ User.destroy_all
 Book.create!(
 title: 'Momo', 
 author: 'Michael Ende',
-year: '1974'
+year: '1974',
 description: 'The sinister men in grey have arrived and are silently taking over the city. They are drawing life-blood from the unsuspecting inhabitants. They are the time-thieves.
-
 It is Momo, the ragged little waif, who discovers what is happening. And it is Momo, with her uncanny ability to listen, her simplicity and honesty, who holds the key to salvation. She is the only one who can resist these soulless, corrupt creatures.
-
 In this intricate and compelling story of a fantastic country, Momo sets out to destroy the enemy. The mysterious Professor Hora and his strangely gifted tortoise, Cassiopeia, will help her.', 
 image_url: '',
-user_id:'1',
-book_shelf_id: '')
+bookshelf_id: '')
 
 Book.create!(
     title: 'How to become a King', 
@@ -28,8 +25,7 @@ Book.create!(
     year:  '1978',
     description: 'Seventeen years after the king of Katoren dies, a boy aspires to win the crown and is tested with seven impossible tasks by six Ministers.', 
     image_url: '',
-    user_id:'1' 
-    book_shelf_id: '')
+    bookshelf_id: '')
 
 Book.create!(
     title: 'Lilus Kikus', 
@@ -37,8 +33,7 @@ Book.create!(
     year:  '1954',
     description: 'Collection of short stories', 
     image_url: '',
-    user_id:'1' 
-    book_shelf_id: '')
+    bookshelf_id: '')
 
 Book.create!(
     title: 'Encyclopedia of Things That Never Where', 
@@ -46,10 +41,5 @@ Book.create!(
     year: '1985', 
     description: 'Detailed, encyclopedia-style entries, supplemented by 300 full-color and black-and-white illustrations, introduce the worlds of imaginative mythology, folklore, literature, and fairy tales. Size D. 15,000 print.', 
     image_url: '',
-    user_id:'1',
-    book_shelf_id: '')
+    bookshelf_id: '')
 
-User.create!(
-    email: 'sample@user.com'
-    password: 'password'
-)
