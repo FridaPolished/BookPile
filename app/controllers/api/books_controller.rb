@@ -6,7 +6,7 @@ class Api::BooksController < ApplicationController
     end
     
     def index
-        @books = Books.all
+        @books = Book.all
         render :index
     end
 
@@ -18,7 +18,6 @@ class Api::BooksController < ApplicationController
             :description,
             :year,
             :image_url,
-            :user_id,
             :bookshelf_id
         )
     end
