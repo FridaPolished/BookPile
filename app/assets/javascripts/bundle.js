@@ -395,7 +395,8 @@ function (_React$Component) {
           }, " ", error, " ");
         }));
       }
-    }
+    } // 
+
   }, {
     key: "sampleUser",
     value: function sampleUser(e) {
