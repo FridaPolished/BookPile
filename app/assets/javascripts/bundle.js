@@ -86,6 +86,52 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/book_actions.js":
+/*!******************************************!*\
+  !*** ./frontend/actions/book_actions.js ***!
+  \******************************************/
+/*! exports provided: RECEIVE_BOOK, RECEIVE_ALL_BOOKS, receiveBooks, receiveBook, fetchBooks, fetchBook */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_BOOK", function() { return RECEIVE_BOOK; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_BOOKS", function() { return RECEIVE_ALL_BOOKS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveBooks", function() { return receiveBooks; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveBook", function() { return receiveBook; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchBooks", function() { return fetchBooks; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchBook", function() { return fetchBook; });
+var RECEIVE_BOOK = 'RECEIVE_BOOK';
+var RECEIVE_ALL_BOOKS = 'RECEIVE_ALL_BOOKS';
+var receiveBooks = function receiveBooks(books) {
+  return {
+    type: RECEIVE_ALL_BOOKS,
+    books: books
+  };
+};
+var receiveBook = function receiveBook(book) {
+  return {
+    type: RECEIVE_BOOK,
+    book: book
+  };
+};
+var fetchBooks = function fetchBooks() {
+  return function (dispatch) {
+    return fetchBooks().then(function (books) {
+      return dispatch(receiveBooks(books));
+    });
+  };
+};
+var fetchBook = function fetchBook(id) {
+  return function (dispatch) {
+    return fetchBooks(id).then(function (book) {
+      return dispatch(receiveBooks(book));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -678,6 +724,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  //  import * as ApiUtil from './util/session_api_util';
 
 
+ // import * as BooksAPIUtil from './util/book_api_util';
 
 document.addEventListener("DOMContentLoaded", function () {
   var store;
@@ -701,11 +748,48 @@ document.addEventListener("DOMContentLoaded", function () {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
   }), root);
-}); // // window.getState = store.getState;
-//  window.dispatch = store.dispatch;
+}); // window.dispatch = store.dispatch;
+// window.fetchBooks = BooksAPIUtil.fetchBooks;
+// window.fetchBook = BooksAPIUtil.fetchBook;
+// window.getState = store.getState;
 // window.login = ApiUtil.login;
 // window.logout = ApiUtil.logout;
 // // window.signup = ApiUtil.signup;
+
+/***/ }),
+
+/***/ "./frontend/reducers/books_reducer.js":
+/*!********************************************!*\
+  !*** ./frontend/reducers/books_reducer.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_book_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/book_actions */ "./frontend/actions/book_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var booksReducer = function booksReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_book_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_BOOKS"]:
+      return action.books;
+
+    case _actions_book_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_BOOK"]:
+      return Object.assign({}, state, _defineProperty({}, action.book.id, action.book));
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (booksReducer);
 
 /***/ }),
 
@@ -720,10 +804,13 @@ document.addEventListener("DOMContentLoaded", function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
+/* harmony import */ var _books_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./books_reducer */ "./frontend/reducers/books_reducer.js");
+
 
 
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  books: _books_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
