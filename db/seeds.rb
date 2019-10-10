@@ -43,3 +43,9 @@ Book.create!(
     image_url: '',
     bookshelf_id: '')
 
+User.create!(
+    name: 'Sample user',
+    email: 'sample@email.com',
+    password: 'password'
+    )
+

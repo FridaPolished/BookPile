@@ -448,7 +448,7 @@ function (_React$Component) {
       debugger;
       e.preventDefault();
       var user = {
-        email: "sample@user.com",
+        email: "sample@email.com",
         password: "password"
       };
       this.props.processForm(user);
