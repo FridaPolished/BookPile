@@ -2,16 +2,13 @@
 #
 # Table name: books
 #
-#  id           :integer          not null, primary key
-#  title        :string           not null
-#  author       :string           not null
-#  year         :string
-#  description  :text
-#  image_url    :string
-#  user_id      :integer          not null
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  bookshelf_id :integer
+#  id          :integer          not null, primary key
+#  title       :string           not null
+#  author      :string           not null
+#  year        :string
+#  description :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
