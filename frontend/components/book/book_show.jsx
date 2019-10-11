@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 
 
@@ -42,3 +43,11 @@ class BookShow extends React.Component {
 
 };
 export default BookShow;
+=======
+
+
+export default BookShow = () =>{
+
+
+};
+>>>>>>> 342fd451ef16267b507a998f32e6d2b734be83c3
