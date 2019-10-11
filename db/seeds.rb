@@ -45,7 +45,7 @@ encyclo = Book.create!(
     title: 'Encyclopedia of Things That Never Where', 
     author: 'Michael Page, Robert Ingpen (Illustrator)',
     year: '1985', 
-    description: 'Detailed, encyclopedia-style entries, supplemented by 300 full-color and black-and-white illustrations, introduce the worlds of imaginative mythology, folklore, literature, and fairy tales. Size D. 15,000 print.', 
+    description: 'Detailed, encyclopedia-style entries, supplemented by 300 full-color and black-and-white illustrations, introduce the worlds of imaginative mythology, folklore, literature, and fairy tales. Size D. 15,000 print.' 
     )
     filee = open('https://bookpile-seeds.s3-us-west-1.amazonaws.com/561867.jpg')
     encyclo.cover.attach(io: filee, filename: '561867.jpg')
