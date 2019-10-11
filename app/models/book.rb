@@ -18,8 +18,6 @@ class Book < ApplicationRecord
 
     validates :title, :author, presence: true
 
-    
-
-    # belongs_to :bookshelf
+    has_one_attached :cover
 
 end

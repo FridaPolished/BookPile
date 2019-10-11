@@ -17,7 +17,6 @@ class Api::BooksController < ApplicationController
             :author,
             :description,
             :year,
-            :image_url,
             :bookshelf_id
         )
     end

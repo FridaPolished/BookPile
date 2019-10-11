@@ -1,28 +1,16 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-class BookIndexItem extends React.Component {
-    constructor (props) {
-        super(props);
+const BookIndexItem = ({ book }) => (
 
-        this.displayMiniShow = this.displayMiniShow.bind(this);
-    }
-
-    displayMiniShow(e){
-        return e => {
-            
-        }
-    };
-
-    render(){
-        return (
-        <div>
-            <Link to={`/books/${book.id}`}></Link>
-            <img src="" alt="" onMouseLeave={this.displayMiniShow}/>
-        </div>
-        )
-    }
-
-};
+	<div>
+		<Link to={`/books/${book.id}`}>
+		
+			<img className='book-cover-image' 
+			src={book.coverUrl} 
+			alt={book.title}/>
+			</Link>
+	</div>
+);
 
 export default BookIndexItem;
