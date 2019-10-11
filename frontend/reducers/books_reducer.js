@@ -2,7 +2,7 @@ import {RECEIVE_BOOK, RECEIVE_ALL_BOOKS} from '../actions/book_actions';
 
 const booksReducer = (state ={}, action) => {
     Object.freeze(state);
-    debugger
+    
     switch(action.type){
         case RECEIVE_ALL_BOOKS:
             return action.books;

@@ -6,13 +6,13 @@ import BookShowContainer from './book_show_container';
 class BookIndex extends React.Component {
 
     componentDidMount(){
-        debugger
+        
      this.props.fetchBooks();
     }
 
 
     render(){
-        debugger
+        
         const { books } = this.props;
          
         return (

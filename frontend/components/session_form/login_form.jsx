@@ -14,7 +14,7 @@ class LoginForm extends React.Component {
     }
 
     handleSubmit(e) {
-        debugger
+        
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.setState({ email: "", password: "", name: "" })
@@ -40,7 +40,7 @@ class LoginForm extends React.Component {
     }
 // 
     sampleUser(e) {
-        debugger
+        
         e.preventDefault();
         let user = { email: "sample@email.com", password: "password"};
         this.props.processForm(user);

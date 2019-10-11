@@ -4,7 +4,7 @@ import BookShow from './book_show';
 
 
 const mapStateToProps = (state, OwnProps) => {
-    debugger
+    
     let bookId = OwnProps.match.params.bookId;
     let book = state.entities.books[bookId];
     return ({
@@ -12,7 +12,7 @@ const mapStateToProps = (state, OwnProps) => {
     })
 };
 const mapDispatchToProps = (dispatch) => {
-    debugger
+    
     return ({
         fetchBook: id => dispatch(fetchBook(id))
     })
