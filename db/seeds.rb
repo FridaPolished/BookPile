@@ -18,7 +18,7 @@ momo = Book.create!(
     description: 'The sinister men in grey have arrived and are silently taking over the city. They are drawing life-blood from the unsuspecting inhabitants. They are the time-thieves.
     It is Momo, the ragged little waif, who discovers what is happening. And it is Momo, with her uncanny ability to listen, her simplicity and honesty, who holds the key to salvation. She is the only one who can resist these soulless, corrupt creatures.
     In this intricate and compelling story of a fantastic country, Momo sets out to destroy the enemy. The mysterious Professor Hora and his strangely gifted tortoise, Cassiopeia, will help her.', 
-    image_url: '')
+  )
 filem = open('https://bookpile-seeds.s3-us-west-1.amazonaws.com/68811.jpg')
 
 momo.cover.attach(io: filem, filename: '68811.jpg')
@@ -28,7 +28,7 @@ katoren = Book.create!(
     author: 'Jan Terlouw',
     year:  '1978',
     description: 'Seventeen years after the king of Katoren dies, a boy aspires to win the crown and is tested with seven impossible tasks by six Ministers.', 
-    image_url: '')
+    )
     filek = open('https://bookpile-seeds.s3-us-west-1.amazonaws.com/995778.jpg')
     katoren.cover.attach(io: filek, filename: '995778.jpg')
 
@@ -37,7 +37,7 @@ lilus =  Book.create!(
     author: 'Elena Poniatowska, Leonora Carrington (Illustrator)',
     year:  '1954',
     description: 'Collection of short stories', 
-    image_url: '')
+    )
     filel = open('https://bookpile-seeds.s3-us-west-1.amazonaws.com/7067626._SX318_.jpg')
     lilus.cover.attach(io: filel, filename: '7067626._SX318_.jpg')
 
@@ -46,7 +46,7 @@ encyclo = Book.create!(
     author: 'Michael Page, Robert Ingpen (Illustrator)',
     year: '1985', 
     description: 'Detailed, encyclopedia-style entries, supplemented by 300 full-color and black-and-white illustrations, introduce the worlds of imaginative mythology, folklore, literature, and fairy tales. Size D. 15,000 print.', 
-    image_url: '')
+    )
     filee = open('https://bookpile-seeds.s3-us-west-1.amazonaws.com/561867.jpg')
     encyclo.cover.attach(io: filee, filename: '561867.jpg')
 
