@@ -1,3 +1,52 @@
 // Place all the styles related to the api/books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.book-cover-image {
+   display: flex;
+   width: 115px;
+   height: 180px;
+   margin-left: auto;
+   margin-right: auto;
+   bottom: 0;
+   padding: 2rem;
+   text-align: center;
+}
+
+.book-index {
+   display: grid;
+    height: 400px;
+    margin: 2rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+#bookpile {
+   text-decoration: none;
+}
+
+.book-detail {
+   width: 455px;
+   display: -webkit-inline-box;
+    width: 70%;
+    text-align: justify;
+}
+
+.book-detail h1 {
+   margin-bottom: 0;
+   width: 100%;
+   font-weight: bold;
+}
+
+.book-detail h4 {
+   margin-bottom: 8px;
+}
+.book-detail p {
+   margin: 18px 0;
+   font-size: 14px;
+}
+
+.title{
+  margin-top: 30px;
+}
