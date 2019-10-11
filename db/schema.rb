@@ -10,16 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_10_10_213806) do
-=======
-ActiveRecord::Schema.define(version: 2019_10_09_235515) do
->>>>>>> 342fd451ef16267b507a998f32e6d2b734be83c3
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -41,22 +36,13 @@ ActiveRecord::Schema.define(version: 2019_10_09_235515) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-=======
->>>>>>> 342fd451ef16267b507a998f32e6d2b734be83c3
   create_table "books", force: :cascade do |t|
     t.string "title", null: false
     t.string "author", null: false
     t.string "year"
     t.text "description"
-<<<<<<< HEAD
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-=======
-    t.string "image_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "bookshelf_id"
->>>>>>> 342fd451ef16267b507a998f32e6d2b734be83c3
     t.index ["author"], name: "index_books_on_author"
   end
 

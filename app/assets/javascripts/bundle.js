@@ -86,6 +86,54 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/book_actions.js":
+/*!******************************************!*\
+  !*** ./frontend/actions/book_actions.js ***!
+  \******************************************/
+/*! exports provided: RECEIVE_BOOK, RECEIVE_ALL_BOOKS, receiveBooks, receiveBook, fetchBooks, fetchBook */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_BOOK", function() { return RECEIVE_BOOK; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_BOOKS", function() { return RECEIVE_ALL_BOOKS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveBooks", function() { return receiveBooks; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveBook", function() { return receiveBook; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchBooks", function() { return fetchBooks; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchBook", function() { return fetchBook; });
+/* harmony import */ var _util_book_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/book_api_util */ "./frontend/util/book_api_util.js");
+var RECEIVE_BOOK = 'RECEIVE_BOOK';
+var RECEIVE_ALL_BOOKS = 'RECEIVE_ALL_BOOKS';
+
+var receiveBooks = function receiveBooks(books) {
+  return {
+    type: RECEIVE_ALL_BOOKS,
+    books: books
+  };
+};
+var receiveBook = function receiveBook(book) {
+  return {
+    type: RECEIVE_BOOK,
+    book: book
+  };
+};
+var fetchBooks = function fetchBooks() {
+  return function (dispatch) {
+    return _util_book_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchBooks"]().then(function (books) {
+      return dispatch(receiveBooks(books));
+    });
+  };
+};
+var fetchBook = function fetchBook(id) {
+  return function (dispatch) {
+    return _util_book_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchBook"](id).then(function (book) {
+      return dispatch(receiveBook(book));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -219,14 +267,224 @@ var App = function App() {
 
 /***/ }),
 
+/***/ "./frontend/components/book/book_index.jsx":
+/*!*************************************************!*\
+  !*** ./frontend/components/book/book_index.jsx ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _book_index_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./book_index_item */ "./frontend/components/book/book_index_item.jsx");
+/* harmony import */ var _book_show_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./book_show_container */ "./frontend/components/book/book_show_container.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var BookIndex =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(BookIndex, _React$Component);
+
+  function BookIndex() {
+    _classCallCheck(this, BookIndex);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(BookIndex).apply(this, arguments));
+  }
+
+  _createClass(BookIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchBooks();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var books = this.props.books;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, books.map(function (book) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_book_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          key: book.id,
+          book: book
+        });
+      })));
+    }
+  }]);
+
+  return BookIndex;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (BookIndex);
+
+/***/ }),
+
 /***/ "./frontend/components/book/book_index_container.js":
 /*!**********************************************************!*\
   !*** ./frontend/components/book/book_index_container.js ***!
   \**********************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/fridapulido/Desktop/BookPile/frontend/components/book/book_index_container.js: Unexpected token (1:1)\n\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m   | \u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 2 | \u001b[39m\u001b[36mimport\u001b[39m \u001b[33mReact\u001b[39m from \u001b[32m'react'\u001b[39m\u001b[33m;\u001b[39m \u001b[0m\n\u001b[0m \u001b[90m 3 | \u001b[39m\u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 4 | \u001b[39m\u001b[33m>>>\u001b[39m\u001b[33m>>>\u001b[39m\u001b[33m>\u001b[39m \u001b[35m342\u001b[39mfd451ef16267b507a998f32e6d2b734be83c3\u001b[0m\n    at Object.raise (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:6400:17)\n    at Object.unexpected (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:7728:16)\n    at Object.jsxParseIdentifier (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3383:12)\n    at Object.jsxParseNamespacedName (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3393:23)\n    at Object.jsxParseElementName (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3404:21)\n    at Object.jsxParseOpeningElementAt (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3490:22)\n    at Object.jsxParseElementAt (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3523:33)\n    at Object.jsxParseElement (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3597:17)\n    at Object.parseExprAtom (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3604:19)\n    at Object.parseExprSubscripts (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8507:23)\n    at Object.parseMaybeUnary (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8487:21)\n    at Object.parseExprOps (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8353:23)\n    at Object.parseMaybeConditional (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8326:23)\n    at Object.parseMaybeAssign (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8273:21)\n    at Object.parseExpression (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8221:23)\n    at Object.parseStatementContent (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:10061:23)\n    at Object.parseStatement (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:9932:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:10508:25)\n    at Object.parseBlockBody (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:10495:10)\n    at Object.parseTopLevel (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:9861:10)\n    at Object.parse (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:11373:17)\n    at parse (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:11409:38)\n    at parser (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/core/lib/transformation/normalize-file.js:168:34)\n    at normalizeFile (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/core/lib/transformation/normalize-file.js:102:11)\n    at runSync (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/core/lib/transformation/index.js:44:43)\n    at runAsync (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/core/lib/transformation/index.js:35:14)\n    at process.nextTick (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/core/lib/transform.js:34:34)\n    at process._tickCallback (internal/process/next_tick.js:61:11)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_book_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/book_actions */ "./frontend/actions/book_actions.js");
+/* harmony import */ var _book_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./book_index */ "./frontend/components/book/book_index.jsx");
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    books: Object.values(state.entities.books)
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchBooks: function fetchBooks() {
+      return dispatch(Object(_actions_book_actions__WEBPACK_IMPORTED_MODULE_2__["fetchBooks"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(_book_index__WEBPACK_IMPORTED_MODULE_3__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/book/book_index_item.jsx":
+/*!******************************************************!*\
+  !*** ./frontend/components/book/book_index_item.jsx ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+
+
+var BookIndexItem = function BookIndexItem(_ref) {
+  var book = _ref.book;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/books/".concat(book.id)
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "book-cover-image",
+    src: book.coverUrl,
+    alt: book.title
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (BookIndexItem);
+
+/***/ }),
+
+/***/ "./frontend/components/book/book_show.jsx":
+/*!************************************************!*\
+  !*** ./frontend/components/book/book_show.jsx ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var BookShow =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(BookShow, _React$Component);
+
+  function BookShow() {
+    _classCallCheck(this, BookShow);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(BookShow).apply(this, arguments));
+  }
+
+  _createClass(BookShow, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchBook(this.props.match.params.bookId);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var book = this.props.book;
+
+      if (!book) {
+        return null;
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "book-detail"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "book-cover-image",
+        src: book.coverUrl,
+        alt: "cover for ".concat(book.title)
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "book-information"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "title"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, book.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "by ", book.author), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, book.year), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, book.description))));
+    } //rating will go here with little stars, maybe books?
+    //review form will go here
+    //reviews will go here
+
+  }]);
+
+  return BookShow;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (BookShow);
 
 /***/ }),
 
@@ -235,9 +493,34 @@ throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index
   !*** ./frontend/components/book/book_show_container.js ***!
   \*********************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/fridapulido/Desktop/BookPile/frontend/components/book/book_show_container.js: Unexpected token (6:1)\n\n\u001b[0m \u001b[90m 4 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 5 | \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 6 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m   | \u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 7 | \u001b[39m\u001b[36mconst\u001b[39m mapStateToProps \u001b[33m=\u001b[39m (state\u001b[33m,\u001b[39m \u001b[33mOwnProps\u001b[39m) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 8 | \u001b[39m    \u001b[0m\n\u001b[0m \u001b[90m 9 | \u001b[39m    let bookId \u001b[33m=\u001b[39m \u001b[33mOwnProps\u001b[39m\u001b[33m.\u001b[39mmatch\u001b[33m.\u001b[39mparams\u001b[33m.\u001b[39mbookId\u001b[33m;\u001b[39m\u001b[0m\n    at Object.raise (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:6400:17)\n    at Object.unexpected (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:7728:16)\n    at Object.jsxParseIdentifier (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3383:12)\n    at Object.jsxParseNamespacedName (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3393:23)\n    at Object.jsxParseElementName (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3404:21)\n    at Object.jsxParseOpeningElementAt (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3490:22)\n    at Object.jsxParseElementAt (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3523:33)\n    at Object.jsxParseElement (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3597:17)\n    at Object.parseExprAtom (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3604:19)\n    at Object.parseExprSubscripts (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8507:23)\n    at Object.parseMaybeUnary (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8487:21)\n    at Object.parseExprOps (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8353:23)\n    at Object.parseMaybeConditional (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8326:23)\n    at Object.parseMaybeAssign (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8273:21)\n    at Object.parseExpression (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8221:23)\n    at Object.parseStatementContent (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:10061:23)\n    at Object.parseStatement (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:9932:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:10508:25)\n    at Object.parseBlockBody (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:10495:10)\n    at Object.parseTopLevel (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:9861:10)\n    at Object.parse (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:11373:17)\n    at parse (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:11409:38)\n    at parser (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/core/lib/transformation/normalize-file.js:168:34)\n    at normalizeFile (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/core/lib/transformation/normalize-file.js:102:11)\n    at runSync (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/core/lib/transformation/index.js:44:43)\n    at runAsync (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/core/lib/transformation/index.js:35:14)\n    at process.nextTick (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/core/lib/transform.js:34:34)\n    at process._tickCallback (internal/process/next_tick.js:61:11)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_book_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/book_actions */ "./frontend/actions/book_actions.js");
+/* harmony import */ var _book_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./book_show */ "./frontend/components/book/book_show.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, OwnProps) {
+  var bookId = OwnProps.match.params.bookId;
+  var book = state.entities.books[bookId];
+  return {
+    book: book
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchBook: function fetchBook(id) {
+      return dispatch(Object(_actions_book_actions__WEBPACK_IMPORTED_MODULE_1__["fetchBook"])(id));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_book_show__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
@@ -760,9 +1043,33 @@ document.addEventListener("DOMContentLoaded", function () {
   !*** ./frontend/reducers/books_reducer.js ***!
   \********************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/fridapulido/Desktop/BookPile/frontend/reducers/books_reducer.js: Unexpected token (5:1)\n\n\u001b[0m \u001b[90m 3 | \u001b[39m\u001b[36mconst\u001b[39m booksReducer \u001b[33m=\u001b[39m (state \u001b[33m=\u001b[39m{}\u001b[33m,\u001b[39m action) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 4 | \u001b[39m    \u001b[33mObject\u001b[39m\u001b[33m.\u001b[39mfreeze(state)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m   | \u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 6 | \u001b[39m    \u001b[0m\n\u001b[0m \u001b[90m 7 | \u001b[39m\u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 8 | \u001b[39m\u001b[33m>>>\u001b[39m\u001b[33m>>>\u001b[39m\u001b[33m>\u001b[39m \u001b[35m342\u001b[39mfd451ef16267b507a998f32e6d2b734be83c3\u001b[0m\n    at Object.raise (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:6400:17)\n    at Object.unexpected (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:7728:16)\n    at Object.jsxParseIdentifier (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3383:12)\n    at Object.jsxParseNamespacedName (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3393:23)\n    at Object.jsxParseElementName (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3404:21)\n    at Object.jsxParseOpeningElementAt (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3490:22)\n    at Object.jsxParseElementAt (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3523:33)\n    at Object.jsxParseElement (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3597:17)\n    at Object.parseExprAtom (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3604:19)\n    at Object.parseExprSubscripts (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8507:23)\n    at Object.parseMaybeUnary (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8487:21)\n    at Object.parseExprOps (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8353:23)\n    at Object.parseMaybeConditional (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8326:23)\n    at Object.parseMaybeAssign (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8273:21)\n    at Object.parseExpression (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8221:23)\n    at Object.parseStatementContent (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:10061:23)\n    at Object.parseStatement (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:9932:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:10508:25)\n    at Object.parseBlockBody (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:10495:10)\n    at Object.parseBlock (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:10479:10)\n    at Object.parseFunctionBody (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:9523:24)\n    at Object.parseArrowExpression (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:9464:10)\n    at Object.parseParenAndDistinguishExpression (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:9101:12)\n    at Object.parseExprAtom (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8861:21)\n    at Object.parseExprAtom (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:3609:20)\n    at Object.parseExprSubscripts (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8507:23)\n    at Object.parseMaybeUnary (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8487:21)\n    at Object.parseExprOps (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8353:23)\n    at Object.parseMaybeConditional (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8326:23)\n    at Object.parseMaybeAssign (/Users/fridapulido/Desktop/BookPile/node_modules/@babel/parser/lib/index.js:8273:21)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_book_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/book_actions */ "./frontend/actions/book_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var booksReducer = function booksReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_book_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_BOOKS"]:
+      return action.books;
+
+    case _actions_book_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_BOOK"]:
+      return Object.assign({}, state, _defineProperty({}, action.book.id, action.book));
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (booksReducer);
 
 /***/ }),
 
@@ -964,6 +1271,32 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/book_api_util.js":
+/*!****************************************!*\
+  !*** ./frontend/util/book_api_util.js ***!
+  \****************************************/
+/*! exports provided: fetchBooks, fetchBook */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchBooks", function() { return fetchBooks; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchBook", function() { return fetchBook; });
+var fetchBooks = function fetchBooks() {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/books'
+  });
+};
+var fetchBook = function fetchBook(id) {
+  return $.ajax({
+    method: 'GET',
+    url: "/api/books/".concat(id)
+  });
+};
 
 /***/ }),
 
