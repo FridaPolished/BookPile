@@ -12,13 +12,12 @@ class BookIndex extends React.Component {
 
 
     render(){
-        
         const { books } = this.props;
          
         return (
             <section className='book-index'>
                <Route path='/books/:bookId' component={BookShowContainer}/>
-               Recommendations 
+                
                 {books.map(book => <BookIndexItem key={book.title} book={book} />)}
             </section>
             )

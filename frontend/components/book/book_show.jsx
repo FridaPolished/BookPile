@@ -4,12 +4,12 @@ import React from 'react';
 class BookShow extends React.Component {
 
 	componentDidMount(){
-		debugger
+		
 		this.props.fetchBook(this.props.match.params.bookId);
 	}
 
 	render(){
-		debugger
+		
 		const {book} = this.props;
 		if(!book){
 			return null;
