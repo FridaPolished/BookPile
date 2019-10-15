@@ -6,6 +6,7 @@ import BookShowContainer from './book_show_container';
 class BookIndex extends React.Component {
 
     componentDidMount(){
+        
         this.props.fetchBooks();
     }
 
@@ -14,10 +15,8 @@ class BookIndex extends React.Component {
         const { books } = this.props;
          
     return (
-        <section>
-            <ul>
+        <section className="book-index">
               {books.map(book => <BookIndexItem key={book.id} book={book} />)}
-            </ul>
         </section>
         )
     }

@@ -17,4 +17,12 @@ class Book < ApplicationRecord
 
     has_one_attached :cover
 
+    has_many :shelves,
+    class_name: :Shelf,
+    foreign_key: :book_id
+
+    has_many :bookshelves,
+    through: :shelves,
+    source: :bookshelf
+
 end

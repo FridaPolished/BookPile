@@ -10,6 +10,8 @@ require 'open-uri'
 
 Book.destroy_all
 User.destroy_all
+Bookshelf.destroy_all
+Shelf.destroy_all
 
 momo = Book.create!(
     title: 'Momo', 
@@ -50,9 +52,55 @@ encyclo = Book.create!(
     filee = open('https://bookpile-seeds.s3-us-west-1.amazonaws.com/561867.jpg')
     encyclo.cover.attach(io: filee, filename: '561867.jpg')
 
-User.create!(
+sample_user = User.create!(
     name: 'Sample user',
     email: 'sample@email.com',
     password: 'password'
     )
 
+fantasy_bookshelf = Bookshelf.create!(
+    name: 'fantasy',
+    user_id: sample_user.id
+)
+short_stories_bookshelf = Bookshelf.create!(
+    name: 'short stories',
+    user_id: sample_user.id
+)
+childrens_bookshelf = Bookshelf.create!(
+    name: "children's book",
+    user_id: sample_user.id
+)
+
+reference_bookshelf = Bookshelf.create!(
+    name: 'reference',
+    user_id: sample_user.id
+)
+
+shelf1 = Shelf.create!(
+    book_id: momo.id,
+    bookshelf_id: fantasy_bookshelf.id
+)
+shelf2 = Shelf.create!(
+    book_id: katoren.id,
+    bookshelf_id: fantasy_bookshelf.id
+)
+shelf3 = Shelf.create!(
+    book_id: lilus.id,
+    bookshelf_id: short_stories_bookshelf.id
+)
+shelf4 = Shelf.create!(
+    book_id: momo.id,
+    bookshelf_id: childrens_bookshelf.id
+)
+shelf5 = Shelf.create!(
+    book_id: katoren.id,
+    bookshelf_id: childrens_bookshelf.id
+)
+shelf6 = Shelf.create!(
+    book_id: lilus.id,
+    bookshelf_id: childrens_bookshelf.id
+)
+shelf7 = Shelf.create!(
+    book_id: encyclo.id,
+    bookshelf_id: reference_bookshelf.id
+)

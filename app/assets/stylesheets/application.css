@@ -47,4 +47,7 @@
 #logo {
    margin-left: 3%;
 }
-   
+
+.navbar-top {
+   display: flex;
+}

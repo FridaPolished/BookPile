@@ -6,6 +6,10 @@ import {Route, Link, Switch} from 'react-router-dom';
 import {AuthRoute, ProtectedRoute} from '../util/route_util';
 import BookIndexContainer from './book/book_index_container';
 import BookShowContainer from './book/book_show_container';
+import BookshelfIndex from './bookshelf/bookshelf_index_container';
+import BookshelfShowContainer from './bookshelf/bookshelf_show_container';
+import BookshelfFormContainer from './bookshelf/bookshelf_form_container';
+
 // import logo from '../../app/assets/images/logo.jpg';
 
 const App = () => (
@@ -23,13 +27,17 @@ const App = () => (
         </header>
 
         <div className="main-content">
+            <Link to='/shelves'>My bookshelves</Link>
             <Switch>
             <AuthRoute exact path="/login" component={LoginFormContainer} /> 
              <AuthRoute  exact path="/signup" component={SignupFormContainer} />
-             <ProtectedRoute exact path='/' component={BookIndexContainer}/>
-             <Route path='/books/:bookId' component={BookShowContainer} />
-             
+             <Route exact path='/' component={BookIndexContainer}/>
+             <Route exact path='/shelves' component={BookshelfIndex} />
+             <Route exact path='/shelves/new' component={BookshelfFormContainer} />
+             <Route path='/shelves/:bookshelfId' component={BookshelfShowContainer} />
             </Switch>
+            <div className="navbar-top">
+            </div>
         </div>
     </div>
 

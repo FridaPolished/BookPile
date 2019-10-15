@@ -134,6 +134,96 @@ var fetchBook = function fetchBook(id) {
 
 /***/ }),
 
+/***/ "./frontend/actions/bookshelf_actions.js":
+/*!***********************************************!*\
+  !*** ./frontend/actions/bookshelf_actions.js ***!
+  \***********************************************/
+/*! exports provided: RECEIVE_ALL_BOOKSHELVES, RECEIVE_BOOKSHELF, receiveAllBookshelves, receiveBookshelf, fetchBookshelves, fetchBookshelf, createBookshelf, updateBookshelf, deleteBookshelf, addBook, deleteBook */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_BOOKSHELVES", function() { return RECEIVE_ALL_BOOKSHELVES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_BOOKSHELF", function() { return RECEIVE_BOOKSHELF; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveAllBookshelves", function() { return receiveAllBookshelves; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveBookshelf", function() { return receiveBookshelf; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchBookshelves", function() { return fetchBookshelves; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchBookshelf", function() { return fetchBookshelf; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createBookshelf", function() { return createBookshelf; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateBookshelf", function() { return updateBookshelf; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteBookshelf", function() { return deleteBookshelf; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addBook", function() { return addBook; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteBook", function() { return deleteBook; });
+/* harmony import */ var _util_bookshelf_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/bookshelf_api_util */ "./frontend/util/bookshelf_api_util.js");
+var RECEIVE_ALL_BOOKSHELVES = "RECEIVE_ALL_BOOKSHELVES";
+var RECEIVE_BOOKSHELF = "RECEIVE_BOOKSHELF";
+
+var receiveAllBookshelves = function receiveAllBookshelves(payload) {
+  return {
+    type: RECEIVE_ALL_BOOKSHELVES,
+    bookshelves: payload.bookshelves,
+    books: payload.books
+  };
+};
+var receiveBookshelf = function receiveBookshelf(payload) {
+  return {
+    type: RECEIVE_BOOKSHELF,
+    bookshelf: payload.bookshelf,
+    books: payload.books
+  };
+};
+var fetchBookshelves = function fetchBookshelves() {
+  return function (dispatch) {
+    return _util_bookshelf_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchBookshelves"]().then(function (bookshelves) {
+      return dispatch(receiveAllBookshelves(bookshelves));
+    });
+  };
+};
+var fetchBookshelf = function fetchBookshelf(id) {
+  return function (dispatch) {
+    return _util_bookshelf_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchBookshelf"](id).then(function (bookshelf) {
+      return dispatch(receiveBookshelf(bookshelf));
+    });
+  };
+};
+var createBookshelf = function createBookshelf(bookshelf) {
+  return function (dispatch) {
+    return _util_bookshelf_api_util__WEBPACK_IMPORTED_MODULE_0__["createBookshelf"](bookshelf).then(function (bookshelf) {
+      return dispatch(receiveBookshelf(bookshelf));
+    });
+  };
+};
+var updateBookshelf = function updateBookshelf(bookshelf) {
+  return function (dispatch) {
+    return _util_bookshelf_api_util__WEBPACK_IMPORTED_MODULE_0__["updateBookshelf"](bookshelf).then(function (bookshelf) {
+      return dispatch(receiveBookshelf(bookshelf));
+    });
+  };
+};
+var deleteBookshelf = function deleteBookshelf(bookshelf) {
+  return function (dispatch) {
+    return _util_bookshelf_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteBookshelf"](bookshelf).then(function (bookshelves) {
+      return dispatch(receiveAllBookshelves(bookshelves));
+    });
+  };
+};
+var addBook = function addBook(shelfInfo) {
+  return function (dispatch) {
+    return _util_bookshelf_api_util__WEBPACK_IMPORTED_MODULE_0__["addBook"](shelfInfo).then(function (bookshelf) {
+      return dispatch(receiveBookshelf(bookshelf));
+    });
+  };
+};
+var deleteBook = function deleteBook(id) {
+  return function (dispatch) {
+    return _util_bookshelf_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteBook"](id).then(function (bookshelf) {
+      return dispatch(receiveBookshelf(bookshelf));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -220,6 +310,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var _book_book_index_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./book/book_index_container */ "./frontend/components/book/book_index_container.js");
 /* harmony import */ var _book_book_show_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./book/book_show_container */ "./frontend/components/book/book_show_container.js");
+/* harmony import */ var _bookshelf_bookshelf_index_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./bookshelf/bookshelf_index_container */ "./frontend/components/bookshelf/bookshelf_index_container.js");
+/* harmony import */ var _bookshelf_bookshelf_show_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./bookshelf/bookshelf_show_container */ "./frontend/components/bookshelf/bookshelf_show_container.js");
+/* harmony import */ var _bookshelf_bookshelf_form_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./bookshelf/bookshelf_form_container */ "./frontend/components/bookshelf/bookshelf_form_container.js");
+
+
+
 
 
 
@@ -245,7 +341,9 @@ var App = function App() {
     className: "nav-header"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "main-content"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+    to: "/shelves"
+  }, "My bookshelves"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
     exact: true,
     path: "/login",
     component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -253,14 +351,24 @@ var App = function App() {
     exact: true,
     path: "/signup",
     component: _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
     exact: true,
     path: "/",
     component: _book_book_index_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
-    path: "/books/:bookId",
-    component: _book_book_show_container__WEBPACK_IMPORTED_MODULE_7__["default"]
-  }))));
+    exact: true,
+    path: "/shelves",
+    component: _bookshelf_bookshelf_index_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
+    exact: true,
+    path: "/shelves/new",
+    component: _bookshelf_bookshelf_form_container__WEBPACK_IMPORTED_MODULE_10__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
+    path: "/shelves/:bookshelfId",
+    component: _bookshelf_bookshelf_show_container__WEBPACK_IMPORTED_MODULE_9__["default"]
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "navbar-top"
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -324,12 +432,14 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var books = this.props.books;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, books.map(function (book) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "book-index"
+      }, books.map(function (book) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_book_index_item__WEBPACK_IMPORTED_MODULE_2__["default"], {
           key: book.id,
           book: book
         });
-      })));
+      }));
     }
   }]);
 
@@ -521,6 +631,388 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_book_show__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/bookshelf/bookshelf_form.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/bookshelf/bookshelf_form.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var BookshelfForm =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(BookshelfForm, _React$Component);
+
+  function BookshelfForm(props) {
+    var _this;
+
+    _classCallCheck(this, BookshelfForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BookshelfForm).call(this, props));
+    _this.state = {
+      name: ''
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(BookshelfForm, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.createBookshelf(this.state);
+    }
+  }, {
+    key: "update",
+    value: function update(field) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_defineProperty({}, field, e.target.value));
+      };
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        name: "",
+        value: this.state.name,
+        onChange: this.update("name")
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "submit",
+        value: "Submit"
+      })));
+    }
+  }]);
+
+  return BookshelfForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (BookshelfForm);
+
+/***/ }),
+
+/***/ "./frontend/components/bookshelf/bookshelf_form_container.js":
+/*!*******************************************************************!*\
+  !*** ./frontend/components/bookshelf/bookshelf_form_container.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_bookshelf_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/bookshelf_actions */ "./frontend/actions/bookshelf_actions.js");
+/* harmony import */ var _bookshelf_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bookshelf_form */ "./frontend/components/bookshelf/bookshelf_form.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    errors: state.errors,
+    currentUserId: state.session.id
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    createBookshelf: function createBookshelf(bookshelf) {
+      return dispatch(Object(_actions_bookshelf_actions__WEBPACK_IMPORTED_MODULE_1__["createBookshelf"])(bookshelf));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_bookshelf_form__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/bookshelf/bookshelf_index.jsx":
+/*!***********************************************************!*\
+  !*** ./frontend/components/bookshelf/bookshelf_index.jsx ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _bookshelf_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bookshelf_index_item */ "./frontend/components/bookshelf/bookshelf_index_item.jsx");
+/* harmony import */ var _bookshelf_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bookshelf_form_container */ "./frontend/components/bookshelf/bookshelf_form_container.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var BookshelfIndex =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(BookshelfIndex, _React$Component);
+
+  function BookshelfIndex(props) {
+    _classCallCheck(this, BookshelfIndex);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(BookshelfIndex).call(this, props));
+  }
+
+  _createClass(BookshelfIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchBookshelves();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var bookshelves = this.props.bookshelves;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "side"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "user-bookshelves"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, bookshelves.map(function (bookshelf) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_bookshelf_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: bookshelf.id,
+          bookshelf: bookshelf
+        });
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+        to: "/shelves/new"
+      }, "Add shelf"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BookshelfShowContainer, null)));
+    }
+  }]);
+
+  return BookshelfIndex;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (BookshelfIndex);
+
+/***/ }),
+
+/***/ "./frontend/components/bookshelf/bookshelf_index_container.js":
+/*!********************************************************************!*\
+  !*** ./frontend/components/bookshelf/bookshelf_index_container.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_bookshelf_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/bookshelf_actions */ "./frontend/actions/bookshelf_actions.js");
+/* harmony import */ var _bookshelf_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bookshelf_index */ "./frontend/components/bookshelf/bookshelf_index.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    bookshelves: Object.values(state.entities.bookshelves)
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchBookshelves: function fetchBookshelves() {
+      return dispatch(Object(_actions_bookshelf_actions__WEBPACK_IMPORTED_MODULE_1__["fetchBookshelves"])());
+    },
+    createBookshelf: function createBookshelf(bookshelf) {
+      return dispatch(Object(_actions_bookshelf_actions__WEBPACK_IMPORTED_MODULE_1__["createBookshelf"])(bookshelf));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_bookshelf_index__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/bookshelf/bookshelf_index_item.jsx":
+/*!****************************************************************!*\
+  !*** ./frontend/components/bookshelf/bookshelf_index_item.jsx ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var BookshelfIndexItem = function BookshelfIndexItem(_ref) {
+  var bookshelf = _ref.bookshelf;
+  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Link"], {
+    to: "/bookshelf/".concat(bookshelf.id)
+  }, bookshelf.name));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (BookshelfIndexItem);
+
+/***/ }),
+
+/***/ "./frontend/components/bookshelf/bookshelf_show.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/bookshelf/bookshelf_show.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var BookshelfShow =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(BookshelfShow, _React$Component);
+
+  function BookshelfShow() {
+    _classCallCheck(this, BookshelfShow);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(BookshelfShow).apply(this, arguments));
+  }
+
+  _createClass(BookshelfShow, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchBookshelf(this.props.match.params.bookshelfId);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var tableElements = this.props.books.map(function (book) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, book.cover), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/books/".concat(book.id)
+        }, book.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, book.author));
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bookshelf-show-col"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "table books"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "cover"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "author")), tableElements));
+    }
+  }]);
+
+  return BookshelfShow;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (BookshelfShow);
+
+/***/ }),
+
+/***/ "./frontend/components/bookshelf/bookshelf_show_container.js":
+/*!*******************************************************************!*\
+  !*** ./frontend/components/bookshelf/bookshelf_show_container.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _bookshelf_show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bookshelf_show */ "./frontend/components/bookshelf/bookshelf_show.jsx");
+/* harmony import */ var _actions_bookshelf_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/bookshelf_actions */ "./frontend/actions/bookshelf_actions.js");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state, OwnProps) {
+  var bookshelfId = OwnProps.match.params.bookshelfId;
+  var bookshelf = state.entities.bookshelf[bookshelfId];
+  var bookIds = bookshelf.bookIds;
+  var books = bookIds.map(function (bookId) {
+    return state.entities.books[bookId];
+  });
+  return {
+    bookshelf: bookshelf,
+    books: books
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchBookshelf: function fetchBookshelf(id) {
+      return dispatch(Object(_actions_bookshelf_actions__WEBPACK_IMPORTED_MODULE_2__["fetchBookshelf"])(id));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_bookshelf_show__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -1005,6 +1497,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
  // import * as BooksAPIUtil from './util/book_api_util';
+// import {fetchBookshelves} from './actions/bookshelf_actions';
 
 document.addEventListener("DOMContentLoaded", function () {
   var store;
@@ -1028,8 +1521,9 @@ document.addEventListener("DOMContentLoaded", function () {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
   }), root);
-}); // window.dispatch = store.dispatch;
-// window.fetchBooks = BooksAPIUtil.fetchBooks;
+}); // window.fetchBooks = BooksAPIUtil.fetchBooks;
+// window.fetchBookshelves = fetchBookshelves;
+// window.dispatch = store.dispatch;
 // window.fetchBook = BooksAPIUtil.fetchBook;
 // window.getState = store.getState;
 // window.login = ApiUtil.login;
@@ -1048,7 +1542,9 @@ document.addEventListener("DOMContentLoaded", function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_book_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/book_actions */ "./frontend/actions/book_actions.js");
+/* harmony import */ var _actions_bookshelf_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/bookshelf_actions */ "./frontend/actions/bookshelf_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -1064,12 +1560,48 @@ var booksReducer = function booksReducer() {
     case _actions_book_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_BOOK"]:
       return Object.assign({}, state, _defineProperty({}, action.book.id, action.book));
 
+    case _actions_bookshelf_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ALL_BOOKSHELVES"]:
+      return Object.assign({}, state, action.books);
+
     default:
       return state;
   }
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (booksReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/bookshelves_reducer.js":
+/*!**************************************************!*\
+  !*** ./frontend/reducers/bookshelves_reducer.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_bookshelf_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/bookshelf_actions */ "./frontend/actions/bookshelf_actions.js");
+
+
+var bookshelvesReducer = function bookshelvesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_bookshelf_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_BOOKSHELVES"]:
+      return action.bookshelves;
+
+    case _actions_bookshelf_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_BOOKSHELF"]:
+      return Object.assign({}, state, action.bookshelf);
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (bookshelvesReducer);
 
 /***/ }),
 
@@ -1085,12 +1617,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _books_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./books_reducer */ "./frontend/reducers/books_reducer.js");
+/* harmony import */ var _bookshelves_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./bookshelves_reducer */ "./frontend/reducers/bookshelves_reducer.js");
+
 
 
 
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  books: _books_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
+  books: _books_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  bookshelves: _bookshelves_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -1295,6 +1830,76 @@ var fetchBook = function fetchBook(id) {
   return $.ajax({
     method: 'GET',
     url: "/api/books/".concat(id)
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/bookshelf_api_util.js":
+/*!*********************************************!*\
+  !*** ./frontend/util/bookshelf_api_util.js ***!
+  \*********************************************/
+/*! exports provided: fetchBookshelves, fetchBookshelf, createBookshelf, updateBookshelf, deleteBookshelf, addBook, deleteBook */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchBookshelves", function() { return fetchBookshelves; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchBookshelf", function() { return fetchBookshelf; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createBookshelf", function() { return createBookshelf; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateBookshelf", function() { return updateBookshelf; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteBookshelf", function() { return deleteBookshelf; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addBook", function() { return addBook; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteBook", function() { return deleteBook; });
+var fetchBookshelves = function fetchBookshelves() {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/bookshelves'
+  });
+};
+var fetchBookshelf = function fetchBookshelf(id) {
+  return $.ajax({
+    method: 'GET',
+    url: "/api/bookshelves/".concat(id)
+  });
+};
+var createBookshelf = function createBookshelf(bookshelf) {
+  return $.ajax({
+    method: 'POST',
+    url: "api/bookshelves",
+    data: {
+      bookshelf: bookshelf
+    }
+  });
+};
+var updateBookshelf = function updateBookshelf(bookshelf) {
+  return $.ajax({
+    method: 'PATCH',
+    url: "api/bookshelves/".concat(bookshelf.id),
+    data: {
+      bookshelf: bookshelf
+    }
+  });
+};
+var deleteBookshelf = function deleteBookshelf(bookshelf) {
+  return $.ajax({
+    method: 'DELETE',
+    url: "api/bookshelves/".concat(bookshelf.id)
+  });
+};
+var addBook = function addBook(shelfInfo) {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/shelves',
+    data: {
+      shelfInfo: shelfInfo
+    }
+  });
+};
+var deleteBook = function deleteBook(id) {
+  return $.ajax({
+    method: 'DELETE',
+    url: "api/shelves/".concat(id)
   });
 };
 
