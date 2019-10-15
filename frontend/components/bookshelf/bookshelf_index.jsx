@@ -2,10 +2,14 @@ import React from 'react';
 import BookshelfIndexItem from './bookshelf_index_item';
 import BookshelfForm from './bookshelf_form_container';
 import {Link} from 'react-router-dom';
+import BookshelfShow from './bookshelf_show_container';
 
 class BookshelfIndex extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      bookshelf: this.props.bookshelves[0]
+    };
     
   }
   
@@ -21,6 +25,7 @@ class BookshelfIndex extends React.Component {
       <div>
         <div id="side">
           <section className='user-bookshelves'>
+            <h4>My bookshelves</h4>
             <div>
               {bookshelves.map(bookshelf => <BookshelfIndexItem key={bookshelf.id} bookshelf={bookshelf}/>)}
             </div>
@@ -30,7 +35,7 @@ class BookshelfIndex extends React.Component {
           </div>
         </div>
         <div>
-          <BookshelfShowContainer  />
+          {/* <BookshelfShow bookshelf={this.state}/> */}
         </div>
       </div>
 

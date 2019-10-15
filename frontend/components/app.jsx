@@ -27,17 +27,17 @@ const App = () => (
         </header>
 
         <div className="main-content">
-            <Link to='/shelves'>My bookshelves</Link>
-            <Switch>
-            <AuthRoute exact path="/login" component={LoginFormContainer} /> 
-             <AuthRoute  exact path="/signup" component={SignupFormContainer} />
-             <Route exact path='/' component={BookIndexContainer}/>
-             <Route exact path='/shelves' component={BookshelfIndex} />
-             <Route exact path='/shelves/new' component={BookshelfFormContainer} />
-             <Route path='/shelves/:bookshelfId' component={BookshelfShowContainer} />
-            </Switch>
-            <div className="navbar-top">
+            <div className="navbar-top" >
+              
             </div>
+            <Switch>
+                <AuthRoute exact path="/login" component={LoginFormContainer} /> 
+                <AuthRoute  exact path="/signup" component={SignupFormContainer} />
+                <ProtectedRoute exact path='/' component={BookIndexContainer}/>
+                <ProtectedRoute exact path='/shelves' component={BookshelfIndex} />
+                <ProtectedRoute exact path='/shelves/new' component={BookshelfFormContainer} />
+                <ProtectedRoute path='/shelves/:bookshelfId' component={BookshelfShowContainer} />
+            </Switch>
         </div>
     </div>
 
