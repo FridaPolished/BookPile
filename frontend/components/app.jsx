@@ -34,7 +34,8 @@ const App = () => (
                 <AuthRoute exact path="/login" component={LoginFormContainer} /> 
                 <AuthRoute  exact path="/signup" component={SignupFormContainer} />
                 <ProtectedRoute exact path='/' component={BookIndexContainer}/>
-                <ProtectedRoute exact path='/shelves' component={BookshelfIndex} />
+                <Route exact path='/books/:bookId' component={BookShowContainer}/>
+                <ProtectedRoute path='/shelves' component={BookshelfIndex} />
                 <ProtectedRoute exact path='/shelves/new' component={BookshelfFormContainer} />
                 <ProtectedRoute path='/shelves/:bookshelfId' component={BookshelfShowContainer} />
             </Switch>

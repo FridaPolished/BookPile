@@ -1,21 +1,21 @@
 class Api::ShelvesController < ApplicationController
   def create
-    shelf = Shelf.new(shelf_params)
-    if shelf.user_id = current_user.id
+    shelf = Shelf.new(book_id: params[:book_id], bookshelf_id: params[:bookshelf_id])
+    
       if shelf.save
-        render json: 'api/bookshelves/show'
+        @book = Book.find(params[:book_id])
+        @bookshelves = @book.bookshelves.where('bookshelves.user_id = ?', current_user.id)
+        render json: @bookshelves.ids
       else
-        json: shelf.errors.full_messages, status: 422
+        render json: shelf.errors.full_messages, status: 422
       end
-    end
+    
   end
 
   def destroy
-    shelf = Shelf.find(params[:id])
-    if shelf.user_id = current_user.id
+    shelf = Shelf.find_by(book_id: params[:book_id], bookshelf_id: params[:bookshelf_id])
       shelf.destroy
       render json: 'api/bookshelves/index'
-    end
   end
 
   private

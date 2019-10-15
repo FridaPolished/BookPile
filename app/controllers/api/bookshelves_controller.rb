@@ -5,8 +5,14 @@ class Api::BookshelvesController < ApplicationController
     #   @bookshelves = Bookshelf.bookshelves_for_user(params[:user_id])
     #   render :index
     # end
-    @bookshelves = current_user.bookshelves
-    render :index
+    if params[:book_id]
+      @book = Book.find(params[:book_id])
+      @bookshelves = @book.bookshelves.where('bookshelves.user_id = ?', current_user.id)
+      render json: @bookshelves.ids
+    else
+      @bookshelves = current_user.bookshelves
+      render :index
+    end
   end
 
   def show

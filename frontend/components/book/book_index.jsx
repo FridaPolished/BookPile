@@ -13,7 +13,7 @@ class BookIndex extends React.Component {
 
     render(){
         const { books } = this.props;
-         
+     
     return (
         <div>
             <div>
@@ -21,7 +21,7 @@ class BookIndex extends React.Component {
             </div>
             <section className="book-index">
                 {books.map(book => <BookIndexItem key={book.id} book={book} />)}
-            </section>
+            </section>  
         </div>
         )
     }

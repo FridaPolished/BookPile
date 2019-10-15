@@ -3,7 +3,7 @@ import React from 'react';
 
 const BookshelfIndexItem = ({bookshelf}) => (
   <div>
-    <Link to={`/bookshelf/${bookshelf.id}`}>{bookshelf.name}</Link>
+    <Link to={`/shelves/${bookshelf.id}`}>{bookshelf.name}</Link>
   </div>
 );
 

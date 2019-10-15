@@ -6,14 +6,16 @@ class BookshelfForm extends React.Component {
     super(props)
     this.state = {
       name: '',
+      showForm: false,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e){
-
     e.preventDefault();
-    this.props.createBookshelf(this.state);
+    let name = {name: this.state.name};
+    this.setState({name: ''});
+    this.props.createBookshelf(name);
   }
 
   update(field){
@@ -23,6 +25,9 @@ class BookshelfForm extends React.Component {
   }
 
   render(){
+    if (!this.state.showForm) {
+     return  (<div onClick={()=>this.setState({showForm: true})}>Add bookshelf</div>)
+    }
     return (<div>
       <form onSubmit={this.handleSubmit}>
         <input type="text" name="" value={this.state.name} onChange={this.update("name")}/>

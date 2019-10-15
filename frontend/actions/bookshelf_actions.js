@@ -15,8 +15,7 @@ export const receiveAllBookshelves = (payload) => {
 export const receiveBookshelf = (payload) => {
   return ({
     type: RECEIVE_BOOKSHELF,
-    bookshelf: payload.bookshelf,
-    books: payload.books
+    bookshelf: payload,
   })
 };
 

@@ -25,3 +25,9 @@ export const fetchBook = (id) => dispatch => {
         BookAPIUtil.fetchBook(id).then(book => dispatch(receiveBook(book)))
     )
 }
+
+export const fetchBookBookshelves = (BookId) => dispatch => {
+    return (
+        BookAPIUtil.fetchBookBookshelves(BookId).then(bookshelfIds => dispatch(receiveBook({id: BookId, bookshelfIds: bookshelfIds})))
+    )
+}

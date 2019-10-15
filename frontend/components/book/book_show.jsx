@@ -1,5 +1,6 @@
 import React from 'react';
-
+import BookshelfAddContainer from '../bookshelf/bookshelf_add_container';
+import {Route} from 'react-router-dom';
 
 class BookShow extends React.Component {
 
@@ -18,6 +19,7 @@ class BookShow extends React.Component {
 			<section className="book-detail">
 				<div>
 					<img className="book-cover-image" src={book.coverUrl} alt={`cover for ${book.title}`} />
+					<BookshelfAddContainer book={book}/>
 				</div>
 
 				<section className="book-information">
@@ -33,12 +35,5 @@ class BookShow extends React.Component {
 			</section>
 		)
 	}
-
-	//rating will go here with little stars, maybe books?
-	//review form will go here
-	//reviews will go here
-
-
-
 };
 export default BookShow;

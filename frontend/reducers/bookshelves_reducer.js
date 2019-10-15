@@ -7,7 +7,7 @@ const bookshelvesReducer = (state = {}, action)=> {
     case RECEIVE_ALL_BOOKSHELVES:
       return action.bookshelves;
     case RECEIVE_BOOKSHELF:
-      return Object.assign({}, state, action.bookshelf);
+      return Object.assign({}, state, {[action.bookshelf.id]: action.bookshelf});
     default:
       return state;
   }

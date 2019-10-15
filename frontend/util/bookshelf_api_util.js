@@ -38,13 +38,12 @@ export const deleteBookshelf = (bookshelf) => (
 export const addBook = (shelfInfo) => (
   $.ajax({
     method: 'POST',
-    url: 'api/shelves',
-    data: {shelfInfo}
+    url: `api/bookshelves/${shelfInfo.bookshelfId}/books/${shelfInfo.bookId}/shelves`
   })
 )
-export const deleteBook = (id) => (
+export const deleteBook = (shelfInfo) => (
   $.ajax({
     method: 'DELETE',
-    url: `api/shelves/${id}`
+    url: `api/bookshelves/${shelfInfo.bookshelfId}/books/${shelfInfo.bookId}/shelves`
   })
 )
