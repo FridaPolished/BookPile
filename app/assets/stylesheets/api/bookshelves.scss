@@ -1,3 +1,71 @@
 // Place all the styles related to the api/bookshelves controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.grid-container{
+  display: flex;
+  padding: 10px;
+}
+#side {
+  display: flex;
+  padding: 10px;
+}
+
+.user-bookshelves{
+
+}
+
+#right-col{
+
+
+}
+
+.delete-btn{
+
+}
+
+#add-bookslf {
+
+}
+
+.bookshelf-show-col {
+  display: flex;
+  padding: 5px;
+}
+
+.individual-row li{
+ list-style-type: none;
+}
+
+.table-books {
+
+    display: grid;
+    padding: 10px;
+    grid-template-columns: auto auto auto auto;
+}
+
+.titles {
+      display: table-row;
+    clear: both;
+    width: auto;
+}
+.individual-row{
+  display: table-row;
+}
+
+.dropdown-header{
+  position: relative;
+}
+
+.dropdown-checkboxes{
+  position: absolute;
+  display: flex;
+  border: 1px;
+  margin: 20px;
+  width: 300%;
+  margin-left: -30px;
+}
+
+.dropdown-checkboxes ul label{
+ padding: 8px;
+}

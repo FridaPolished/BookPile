@@ -43,8 +43,9 @@ class Api::BookshelvesController < ApplicationController
   end
   
   def destroy
-    bookshelf = current_user.owned_bookshelves.find(params[:id])    
+    bookshelf = current_user.bookshelves.find(params[:id])    
     bookshelf.destroy
+    @bookshelves = current_user.bookshelves
     render :index
   end
   

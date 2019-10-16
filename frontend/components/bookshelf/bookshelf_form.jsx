@@ -31,7 +31,7 @@ class BookshelfForm extends React.Component {
     return (<div>
       <form onSubmit={this.handleSubmit}>
         <input type="text" name="" value={this.state.name} onChange={this.update("name")}/>
-        <input type="submit" value="Submit"/>
+        <input id="add-bookslf" type="submit" value="Add bookshelf"/>
       </form>
     </div>
     )

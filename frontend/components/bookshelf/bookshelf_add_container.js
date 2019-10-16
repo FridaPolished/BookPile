@@ -4,7 +4,7 @@ import BookshelfAdd from './bookshelf_add';
 import {fetchBookBookshelves} from '../../actions/book_actions';
 
 const mapStateToProps = (state, OwnProps) => {
-  debugger
+  
   let bookshelves = Object.values(state.entities.bookshelves);
   return ({
     book: OwnProps.book,

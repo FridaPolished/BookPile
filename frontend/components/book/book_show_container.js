@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {fetchBook} from '../../actions/book_actions';
+import {fetchBook, fetchBookBookshelves} from '../../actions/book_actions';
 // import {fetchBookshelves} from'../../actions/bookshelf_actions';
 import BookShow from './book_show';
 
@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch) => {
     
     return ({
         fetchBook: id => dispatch(fetchBook(id)),     
+        fetchBookBookshelves: (bookId) => dispatch(fetchBookBookshelves(bookId)),
     })
 };
 

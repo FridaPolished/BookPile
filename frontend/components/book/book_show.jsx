@@ -7,6 +7,7 @@ class BookShow extends React.Component {
 	componentDidMount(){
 		
 		this.props.fetchBook(this.props.match.params.bookId);
+		this.props.fetchBookBookshelves(this.props.match.params.bookId)
 	}
 
 	render(){
