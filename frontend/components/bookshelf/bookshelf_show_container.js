@@ -1,13 +1,15 @@
 import {connect} from 'react-redux';
 import BookshelfShow from './bookshelf_show';
-import {fetchBookshelf} from '../../actions/bookshelf_actions';
+import {fetchBookshelf, fetchBookshelves} from '../../actions/bookshelf_actions';
 
 const mapStateToProps = (state, OwnProps) => {
   
   let bookshelfId = OwnProps.match.params.bookshelfId;
   let bookshelf = state.entities.bookshelves[bookshelfId];  
-  let bookIds = bookshelf.bookIds;
-  let books = bookIds.map(bookId => state.entities.books[bookId])
+  let books = [];
+  if (bookshelf && bookshelf.bookIds){
+    books = bookshelf.bookIds.map(bookId => state.entities.books[bookId])
+  }
   return ({
     bookshelf: bookshelf,
     books: books
@@ -16,7 +18,8 @@ const mapStateToProps = (state, OwnProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return ({
-    fetchBookshelf: id => dispatch(fetchBookshelf(id))
+    fetchBookshelf: id => dispatch(fetchBookshelf(id)),
+    fetchBookshelves: () => dispatch(fetchBookshelves())
   })
 };
 

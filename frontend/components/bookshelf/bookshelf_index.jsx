@@ -26,25 +26,33 @@ class BookshelfIndex extends React.Component {
 
   render(){
     const {bookshelves} = this.props;
+
+    if(!bookshelves){
+      return null;
+    }
     const style = this.state.hideButton ? {display: 'none'} : {};
 
     return (
       <div className="grid-container">
         <div id="side">
           <section className='user-bookshelves'>
-            <h4>My bookshelves</h4>
+            <h4>My Books</h4>
+              <div className="horizontal-grey-divider"></div>
             <div>
+              <div className="bookshelves-section-header">Bookshelves </div>
+              <div className="horizontal-grey-divider"></div>
               {bookshelves.map(bookshelf => 
                 <BookshelfIndexItem 
                   key={bookshelf.id} 
                   bookshelf={bookshelf}
                   delete={this.props.deleteBookshelf}
+                  updateBookshelf={this.props.updateBookshelf}
                   style={style}
                   />
                 )}
             </div>
             <BookshelfFormContainer />
-            <div onClick={this.handleChange}>Delete bookshelf</div>
+            <div className="delete-btn" onClick={this.handleChange}>Delete / Edit bookshelf</div>
           </section>
         </div>
           <div id="right-col">

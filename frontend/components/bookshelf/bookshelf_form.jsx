@@ -26,7 +26,7 @@ class BookshelfForm extends React.Component {
 
   render(){
     if (!this.state.showForm) {
-     return  (<div onClick={()=>this.setState({showForm: true})}>Add bookshelf</div>)
+     return  (<div id="add-bookslf" onClick={()=>this.setState({showForm: true})}>Add bookshelf</div>)
     }
     return (<div>
       <form onSubmit={this.handleSubmit}>

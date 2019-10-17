@@ -17,10 +17,11 @@ const Greeting =({ currentUser, logout}) => {
 
     const greetUser = () => (
         <nav className="navbar">
-            <h2>Hello, {currentUser.name}!</h2>
+            <div id="greeting">Hello, {currentUser.name}!</div>
             <br></br>
             <button className="logout-button" onClick={logout}>Log Out</button>
         </nav>
+        
     )
     return currentUser ? greetUser() : sessionForms();
 

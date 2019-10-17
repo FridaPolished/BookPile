@@ -17,7 +17,7 @@ const App = () => (
         <header className='app-header'>
             <div id="logo">
                 <Link to='/' style={{ textDecoration: 'none' }}>
-                    <h1 key="bookpileindex" >BookPile</h1>
+                    <div key="bookpileindex" >bookpile</div>
                     {/* <img src={logo} alt="bookpile logo"/> */}
                 </Link>
             </div>
@@ -25,7 +25,10 @@ const App = () => (
             <GreetingContainer />
             </div>
         </header>
-
+        <div className='top-bar' >
+            <Link to='/shelves'>My bookshelves</Link>
+            <Link to='/'>Book index</Link>
+        </div>
         <div className="main-content">
             <div className="navbar-top" >
               
@@ -41,6 +44,7 @@ const App = () => (
             </Switch>
         </div>
     </div>
+
 
 );
 export default App;

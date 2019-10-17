@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {fetchBookshelves, createBookshelf, deleteBookshelf} from '../../actions/bookshelf_actions';
+import {fetchBookshelves, createBookshelf, updateBookshelf, deleteBookshelf} from '../../actions/bookshelf_actions';
 import BookshelfIndex from './bookshelf_index'
 
 const mapStateToProps = (state) => {
@@ -12,6 +12,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchBookshelves: () => dispatch(fetchBookshelves()),
     createBookshelf: bookshelf => dispatch(createBookshelf(bookshelf)),
     deleteBookshelf: bookshelf => dispatch(deleteBookshelf(bookshelf)),
+    updateBookshelf: bookshelf => dispatch(updateBookshelf(bookshelf))
   })
 };
 
