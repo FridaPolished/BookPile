@@ -42,6 +42,9 @@ Bookpile is a web application inspired in [Goodreads](https://www.goodreads.com/
 To keep a normalize State the Bookshelves controller retrieves all bookshelves
 that include that book through a custom query and renders a json a response the Reducer can interpret as bookshelves that include the book. This is stored inside of the book id and is later used as part of the checkboxes functionality.
 
+![Login page](.app/images/login.png)
+
+
 
 ```import {RECEIVE_BOOK, RECEIVE_ALL_BOOKS} from '../actions/book_actions';
 import {RECEIVE_ALL_BOOKSHELVES, RECEIVE_BOOKSHELF} from '../actions/bookshelf_actions';
@@ -63,4 +66,5 @@ const booksReducer = (state ={}, action) => {
     }
 };
 
-export default booksReducer; ```
+export default booksReducer; 
+```
