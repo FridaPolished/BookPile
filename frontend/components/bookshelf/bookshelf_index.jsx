@@ -36,7 +36,7 @@ class BookshelfIndex extends React.Component {
       <div className="grid-container">
         <div id="side">
           <section className='user-bookshelves'>
-            <h4>My Books</h4>
+            <h4 id="my-books">My Books</h4>
               <div className="horizontal-grey-divider"></div>
             <div>
               <div className="bookshelves-section-header">Bookshelves </div>
@@ -52,7 +52,7 @@ class BookshelfIndex extends React.Component {
                 )}
             </div>
             <BookshelfFormContainer />
-            <div className="delete-btn" onClick={this.handleChange}>Delete / Edit bookshelf</div>
+            <div className="delete-btn1" onClick={this.handleChange}>Delete / Edit</div>
           </section>
         </div>
           <div id="right-col">

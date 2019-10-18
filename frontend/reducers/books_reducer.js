@@ -12,7 +12,8 @@ const booksReducer = (state ={}, action) => {
             return merge({}, state, {[action.book.id]: action.book})
         case RECEIVE_ALL_BOOKSHELVES:
         case RECEIVE_BOOKSHELF:
-            return Object.assign({}, state, action.books);
+            // return Object.assign({}, state, action.books);
+            return merge({}, state, action.books);
         default:
             return state;
     }

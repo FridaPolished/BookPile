@@ -9,8 +9,8 @@ import BookShowContainer from './book/book_show_container';
 import BookshelfIndex from './bookshelf/bookshelf_index_container';
 import BookshelfShowContainer from './bookshelf/bookshelf_show_container';
 import BookshelfFormContainer from './bookshelf/bookshelf_form_container';
+import NavBarContainer from './greeting/nav_bar_container';
 
-// import logo from '../../app/assets/images/logo.jpg';
 
 const App = () => (
     <div>
@@ -18,26 +18,20 @@ const App = () => (
             <div id="logo">
                 <Link to='/' style={{ textDecoration: 'none' }}>
                     <div key="bookpileindex" >bookpile</div>
-                    {/* <img src={logo} alt="bookpile logo"/> */}
                 </Link>
             </div>
             <div className='nav-header'>
             <GreetingContainer />
             </div>
         </header>
-        <div className='top-bar' >
-            <Link to='/shelves'>My bookshelves</Link>
-            <Link to='/'>Book index</Link>
-        </div>
+
         <div className="main-content">
-            <div className="navbar-top" >
-              
-            </div>
+           <NavBarContainer />    
             <Switch>
                 <AuthRoute exact path="/login" component={LoginFormContainer} /> 
                 <AuthRoute  exact path="/signup" component={SignupFormContainer} />
                 <ProtectedRoute exact path='/' component={BookIndexContainer}/>
-                <Route exact path='/books/:bookId' component={BookShowContainer}/>
+                <ProtectedRoute exact path='/books/:bookId' component={BookShowContainer}/>
                 <ProtectedRoute path='/shelves' component={BookshelfIndex} />
                 <ProtectedRoute exact path='/shelves/new' component={BookshelfFormContainer} />
                 <ProtectedRoute path='/shelves/:bookshelfId' component={BookshelfShowContainer} />

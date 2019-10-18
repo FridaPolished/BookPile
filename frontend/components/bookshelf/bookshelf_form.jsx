@@ -26,12 +26,12 @@ class BookshelfForm extends React.Component {
 
   render(){
     if (!this.state.showForm) {
-     return  (<div id="add-bookslf" onClick={()=>this.setState({showForm: true})}>Add bookshelf</div>)
+     return  (<div className="add-bookslf" onClick={()=>this.setState({showForm: true})}>Add bookshelf</div>)
     }
     return (<div>
       <form onSubmit={this.handleSubmit}>
         <input type="text" name="" value={this.state.name} onChange={this.update("name")}/>
-        <input id="add-bookslf" type="submit" value="Add bookshelf"/>
+        <input className="add-bookslf" type="submit" value="Add bookshelf"/>
       </form>
     </div>
     )

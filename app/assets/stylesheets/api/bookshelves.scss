@@ -9,6 +9,8 @@
 #side {
   display: flex;
   padding: 10px;
+  width: 250px;
+  font-size: 14px;
 }
 
 .mini-book-cover-image {
@@ -30,6 +32,11 @@
   margin-block-end: 0;
 }
 
+.user-bookshelves .delete-btn, .user-bookshelves .add-bookslf, .user-bookshelves .cancel-btn {
+  font-size: 12px;
+  display: inline-block;
+}
+
 .horizontal-grey-divider{
   border-bottom: 1px solid #D8D8D8;
   margin: 0.5em 0;
@@ -39,6 +46,13 @@
   font-weight: bold;
   color: black;
 
+}
+
+.grid-padding {
+  padding: 5px;
+}
+.grid-padding a {
+  padding-right: 9px;
 }
 
 #right-col{
@@ -52,25 +66,27 @@
   border: 1px solid #D6D0C4;
   font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
   cursor: pointer;
-  background-color: #F4F1EA;
+  background-color: #bcb9b9;
   line-height: 1;
   color: black;
+}
+.delete-btn1{
+  border-radius: 3px;
+  display: block;
+  border: 1px solid #D6D0C4;
+  font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+  cursor: pointer;
+  background-color: #bcb9b9;
+  line-height: 1;
+  color: black;
+  max-width: fit-content;
+  padding: 1px;
+  font-size: 12px;
 }
 
 .cancel-btn{
 border-radius: 3px;
-  display: block;
-    border: 1px solid #D6D0C4;
-    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
-  cursor: pointer;
-  background-color: red;
-  line-height: 1;
-  color: white;
-}
-
-.edit-btn {
-  border-radius: 3px;
-  display: block;
+  display: inline;
     border: 1px solid #D6D0C4;
     font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
   cursor: pointer;
@@ -79,7 +95,18 @@ border-radius: 3px;
   color: black;
 }
 
-#add-bookslf {
+.edit-btn {
+  border-radius: 3px;
+  display: inline;
+    border: 1px solid #D6D0C4;
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+  cursor: pointer;
+  background-color: #F4F1EA;
+  line-height: 1;
+  color: black;
+}
+
+.add-bookslf {
   border-radius: 3px;
   display: block;
   border: 1px solid #D6D0C4;
@@ -88,6 +115,8 @@ border-radius: 3px;
   background-color: #F4F1EA;
   line-height: 1;
   color: black;
+  text-align: center;
+  padding: 2px;
 }
 
 .bookshelf-show-col {
@@ -103,10 +132,9 @@ border-radius: 3px;
     font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
     display: grid;
     padding: 10px;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-gap: 24px;
+    grid-template-columns: 1fr 2fr 2fr;
     font-size: 14px;
-    color: #000635D;
+    max-width: 70%;
 }
 
 .titles {
@@ -122,34 +150,87 @@ border-radius: 3px;
 }
 .dropdown-header{
   position: relative;
-  background-color: green;
-  font-weight: bold;
-  font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
-  font-size: 12px;
-  border-radius: 25px;
+  background-color: #409D69;
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
    display: block;
-  width: fit-content;
-  padding: 5px;
+  width: 110px;
+  padding: 6px 0px 6px 8px;
   cursor: pointer;
-  margin-left: 40px;
+  margin-left: 64px;
+}
+
+.book-detail .dropdown-header{
+   margin-left: 28px;
+   position: relative;
+  background-color: #409D69;
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+   display: block;
+  width: 110px;
+  padding: 6px 0px 6px 8px;
+  cursor: pointer;
+
 }
 
 .dropdown-checkboxes{
-  position: absolute;
-    
-    border: 1px;
-    margin: 20px;
-    margin-left: -30px;
-    color: black;
-     background-color: #f9f9f9;
-    min-width: 20px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+  position: absolute; 
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #cccccc;
+  margin: 0px;
+  margin-left: -11px;
+  color: black;
+  min-width: 20px;
+  box-shadow: 0 3px 4px -3px rgba(0,0,0,0.5);
+  z-index: 1;
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  background: #ffffff;
 }
 
+.grid-individual-element {
+  border-bottom: 1px solid #D8D8D8;
+  margin: 0.5em 0;
+  padding: 10px;
+  font-weight: bold;
+}
+.grid-individual-element2 {
+  border-bottom: 2px solid #EBE8D5;
+  margin: 0.5em 0;
+  padding: 10px;
+}
 
-.dropdown-checkboxes ul label{
- padding: 8px;
+.single-bookshelf input,
+.single-bookshelf label {
+  display: inline-block;
+  margin-bottom: 0;
+  vertical-align:  middle;
+}
+
+.dropdown-checkboxes ul {
+  padding: 8px;
+  margin-block-start: 9px;
+  margin-block-end: 0px;
+  padding-inline-start: 12px;
+  padding-inline-end: 42px;
+}
+
+.dropdown-checkboxes label:hover{
+  background-color: #f1f1f1;
+  display: block;
+}
+
+#add-form {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  background: #ffffff;
+}
+
+#add-form:hover {
+  background-color: #f1f1f1;
+  display: block;
 }
 
 section a {

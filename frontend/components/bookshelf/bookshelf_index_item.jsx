@@ -55,21 +55,21 @@ handleChange(e){
         <input type="text" value={this.state.name} onChange={this.handleChange} onBlur={this.endEdit}></input>
         )
         button = (
-          <button className="cancel-btn" onClick={this.cancelEdit}>Cancel</button>
+          <button className="cancel-btn" onClick={this.cancelEdit}>cancel</button>
         )
     } else {
       header = (
-      <Link to={`/shelves/${bookshelf.id}`}>{bookshelf.name}</Link>
+      <Link to={`/shelves/${bookshelf.id}`} className="grid-padding">{bookshelf.name}</Link>
       )
       button = (
-        <button className="edit-btn" style={style} onClick={this.startEdit}>edit bookshelf</button>
+        <button className="edit-btn" style={style} onClick={this.startEdit}>edit</button>
       )
     }
   return (<div>
     {header}
+    {button}
     <button className="delete-btn" style={style} id="delete-bookshelf" 
     onClick={() => this.props.delete(bookshelf)}>delete</button>
-    {button}
   </div>)
   }
 

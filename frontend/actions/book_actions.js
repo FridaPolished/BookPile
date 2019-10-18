@@ -11,7 +11,7 @@ export const receiveBooks = (books) => {
 export const receiveBook = (book) => {
     return ({
         type: RECEIVE_BOOK,
-        book: book
+        book: book  
     })
 };
 

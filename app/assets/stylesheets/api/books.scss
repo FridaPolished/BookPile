@@ -16,10 +16,10 @@
 
 .book-index {
    display: grid;
-    height: 400px;
-    margin: 2rem;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+   height: 400px;
+   margin: 2rem;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+   grid-template-rows: 1fr 1fr 1fr;
 }
 
 #bookpile {
@@ -29,8 +29,8 @@
 .book-detail {
    width: 455px;
    display: -webkit-inline-box;
-    width: 70%;
-    text-align: justify;
+   width: 70%;
+   text-align: justify;
 }
 
 .book-detail h1 {

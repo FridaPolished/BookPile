@@ -10,7 +10,7 @@ class Api::BookshelvesController < ApplicationController
       @bookshelves = @book.bookshelves.where('bookshelves.user_id = ?', current_user.id)
       render json: @bookshelves.ids
     else
-      @bookshelves = current_user.bookshelves
+      @bookshelves = current_user.bookshelves.sort
       render :index
     end
   end

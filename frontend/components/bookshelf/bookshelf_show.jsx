@@ -16,13 +16,13 @@ import {Link, Route} from 'react-router-dom';
     }
     let tableElements = this.props.books.map(book => {
       return (<React.Fragment>
-              <div><Link to={`/books/${book.id}`}>
+              <div className="grid-individual-element"><Link to={`/books/${book.id}`}>
                   <img className='mini-book-cover-image'
                     src={book.coverUrl}
                     alt={book.title} />
                </Link></div>
-               <div key={book.title}><Link to={`/books/${book.id}`}>{book.title}</Link></div>
-               <div id="author" key={book.author}>{book.author}</div>
+               <div className="grid-individual-element" key={book.title}><Link to={`/books/${book.id}`}>{book.title}</Link></div>
+               <div className="grid-individual-element" id="author" key={book.author}>{book.author}</div>
               </React.Fragment>
             )
     });
@@ -32,9 +32,9 @@ import {Link, Route} from 'react-router-dom';
         <h3>{this.props.bookshelf.name} bookshelf</h3>
         <section className="table-books">
           
-            <div key='col1'>cover</div> 
-            <div key='col2'>title</div> 
-            <div key='col3'>author</div>  
+            <div className="grid-individual-element2" key='col1'>cover</div> 
+            <div className="grid-individual-element2" key='col2'>title</div> 
+            <div className="grid-individual-element2" key='col3'>author</div>  
           
           {tableElements}
         </section>

@@ -1,4 +1,5 @@
 import React from 'react';
+import BookshelfFormContainer from './bookshelf_form_container';
 
 class BookshelfAdd extends React.Component{
   constructor(props){
@@ -13,8 +14,7 @@ class BookshelfAdd extends React.Component{
   }
 
   componentDidMount(){
-    // this.props.fetchBookshelves();
-    this.props.fetchBookBookshelves(this.props.book.id);
+    this.props.fetchBookshelves().then(() => this.props.fetchBookBookshelves(this.props.book.id));
   }
 
   handleChange(bookshelfId){
@@ -41,15 +41,17 @@ class BookshelfAdd extends React.Component{
     if (!(this.props.book && this.props.book.bookshelfIds)){
       return null;
     }
-    let style = this.state.hideShelves ? {display: 'none'} : {display: 'block'}
+    let style = this.state.hideShelves ? {display: 'none'} : {display: 'inline-block'}
 
     let bookshelves = this.props.bookshelves.map((bookshelf, i) => {
-      return ( 
+      return (
+        <div className="single-bookshelf"> 
         <label key={`label${bookshelf.id}`}>
         <input key={`checkbox${bookshelf.name}`} checked={this.props.book.bookshelfIds.includes(bookshelf.id)}
             type="checkbox"  style={style} onChange={this.handleChange(bookshelf.id)}/>
         {bookshelf.name}
         </label>
+        </div>
       )
     })
 
@@ -58,8 +60,11 @@ class BookshelfAdd extends React.Component{
       <div className="dropdown-header" onClick={this.displayShelves}>Choose a shelf</div>
           <div style={style} className="dropdown-checkboxes"> 
             <ul>
-            {bookshelves}
-           </ul>
+              {bookshelves}
+             </ul>
+            <div id='add-form'>
+              <BookshelfFormContainer  />
+            </div>
           </div>
     </div>
     )

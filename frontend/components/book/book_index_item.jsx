@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import BookshelfAddContainer from '../bookshelf/bookshelf_add_container';
 
 const BookIndexItem =  ({ book }) => (
 
@@ -9,6 +10,9 @@ const BookIndexItem =  ({ book }) => (
 					src={book.coverUrl} 
 					alt={book.title} />
 				</Link>
+				<div id="book-show">
+				<BookshelfAddContainer book={book}/>
+				</div>
 			</div>
 		
 );
