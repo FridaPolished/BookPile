@@ -38,11 +38,21 @@ Bookpile is a web application inspired in [Goodreads](https://www.goodreads.com/
     * Bookshelves have a show page with all the books contained in it.
 
 
-#Code Snippet
+Login page with session forms:
+![Login page](app/assets/images/login.png)
+
+Book index with buttons to add them directly to bookshelfs:
+![Book index](app/assets/images/book_index.png)
+
+Bookshelves index and show page:
+![Bookshelves](app/assets/images/bookshelves.png)
+
+#Code Snippets
+
 To keep a normalize State the Bookshelves controller retrieves all bookshelves
 that include that book through a custom query and renders a json a response the Reducer can interpret as bookshelves that include the book. This is stored inside of the book id and is later used as part of the checkboxes functionality.
 
-![Login page](app/assets/images/login.png)
+
 
 
 
