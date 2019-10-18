@@ -1,10 +1,6 @@
 class Api::BookshelvesController < ApplicationController
 
   def index
-    # if params[:user_id]
-    #   @bookshelves = Bookshelf.bookshelves_for_user(params[:user_id])
-    #   render :index
-    # end
     if params[:book_id]
       @book = Book.find(params[:book_id])
       @bookshelves = @book.bookshelves.where('bookshelves.user_id = ?', current_user.id)
