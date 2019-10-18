@@ -9,7 +9,7 @@
 #side {
   display: flex;
   padding: 10px;
-  width: 250px;
+  width: 220px;
   font-size: 14px;
 }
 
@@ -32,10 +32,16 @@
   margin-block-end: 0;
 }
 
-.user-bookshelves .delete-btn, .user-bookshelves .add-bookslf, .user-bookshelves .cancel-btn {
+.user-bookshelves .delete-btn, .user-bookshelves .cancel-btn {
   font-size: 12px;
   display: inline-block;
 }
+
+.user-bookshelves .add-bookslf {
+  font-size: 12px;
+  display: block;
+}
+
 
 .horizontal-grey-divider{
   border-bottom: 1px solid #D8D8D8;
@@ -134,7 +140,7 @@ border-radius: 3px;
     padding: 10px;
     grid-template-columns: 1fr 2fr 2fr;
     font-size: 14px;
-    max-width: 70%;
+    width: 530px;
 }
 
 .titles {
@@ -194,7 +200,6 @@ border-radius: 3px;
   border-bottom: 1px solid #D8D8D8;
   margin: 0.5em 0;
   padding: 10px;
-  font-weight: bold;
 }
 .grid-individual-element2 {
   border-bottom: 2px solid #EBE8D5;

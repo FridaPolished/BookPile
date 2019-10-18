@@ -24,9 +24,8 @@ const App = () => (
             <GreetingContainer />
             </div>
         </header>
-
+        <NavBarContainer />    
         <div className="main-content">
-           <NavBarContainer />    
             <Switch>
                 <AuthRoute exact path="/login" component={LoginFormContainer} /> 
                 <AuthRoute  exact path="/signup" component={SignupFormContainer} />

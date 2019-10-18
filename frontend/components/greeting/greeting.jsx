@@ -4,15 +4,12 @@ import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/signup_form_container';
 const Greeting =({ currentUser, logout}) => {
     const sessionForms = () => (
-        <div>
-            {/* <Link to="/signup">Sign Up</Link>
-             &nbsp;or&nbsp; 
-            <Link to="/login">Log In</Link> */}
+        <React.Fragment> 
+            <div>
             <LoginFormContainer />
-            <div id="top">
-            <SignupFormContainer />
+            <SignupFormContainer /> 
             </div>
-        </div>
+        </React.Fragment>
     )
 
     const greetUser = () => (

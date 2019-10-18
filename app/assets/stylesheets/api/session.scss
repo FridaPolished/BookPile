@@ -11,6 +11,12 @@
     justify-content: space-evenly;
  }
 
+#errors {
+   display: flex;
+   font-size: 12px;
+}
+
+
  .login-form #sampleuser {
    background-color: #382002;
     color: white;
