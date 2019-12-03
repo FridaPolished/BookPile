@@ -1,3 +1,100 @@
 // Place all the styles related to the api/session controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ .login-form-container {
+    display: flex;
+    justify-content: space-evenly;
+ }
+ .signup-form-container {
+    display: flex;
+    justify-content: space-evenly;
+ }
+
+#errors {
+   display: flex;
+   font-size: 12px;
+}
+
+
+ .login-form #sampleuser {
+   background-color: #382002;
+    color: white;
+    border-color: black;
+    border-radius: 5px;
+    width: max-content;
+    padding: 7px;
+    display: flex;
+    border-width: 0;
+    margin: 3px;
+    font-size: 10px;
+ }
+
+ .signup-form-container p {
+    font-weight: bold;
+ }
+
+ .login-form {
+    display: inline-flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 10px;
+    font-size: 17px;
+    margin: 0 auto;
+ }
+ .signup-form {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 10px;
+    font-size: 17px;
+    margin: 0 auto;
+ }
+  
+ .session-submit-login {
+    background-color: #382002;
+    color: white;
+    border-color: black;
+    border-radius: 5px;
+    width: max-content;
+    padding: 7px;
+    display: flex;
+    border-width: 0;
+    margin: 3px;
+ }
+ .session-submit-signup {
+    background-color: gold;
+    color: rgb(56, 32, 2);
+    border-color: gold;
+    border-radius: 5px;
+    width: min-content;
+ }
+
+ .login-input {
+     padding: 5px;
+     margin: 5px;
+ }
+ .login-signup {
+   padding: 5px;
+   margin: 5px;
+   width: 200px;
+ }
+ .login-login {
+    display: inline-flex;
+    padding: 5px;
+    margin: 5px;
+ }
+
+ .logout-button {
+   background-color: #382002;
+    color: white;
+    border-color: black;
+    border-radius: 5px;
+    width: 34%;
+    padding: -7px;
+    font-weight: bold;
+    font-size: 10px;
+    display: block;
+    margin: 5px;
+   
+}

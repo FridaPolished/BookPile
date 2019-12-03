@@ -9,9 +9,21 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
     />
 );
 
-const mapStateToProps = state => {
-    return { loggedIn: Boolean(state.session.id) };
-}
+
+
+const Protected = ({ component: Component, path, loggedIn, exact }) => (
+    <Route path={path} exact={exact} render={(props) => (
+        loggedIn ? (
+            <Component {...props} />
+        ) : (
+                <div></div>
+            )
+    )} />
+);
+
+const mapStateToProps = state => (
+    { loggedIn: Boolean(state.session.id) }
+);
 
 export const AuthRoute = withRouter(
     connect(
@@ -19,3 +31,5 @@ export const AuthRoute = withRouter(
         null
     )(Auth)
 );
+
+export const ProtectedRoute = withRouter(connect(mapStateToProps)(Protected));

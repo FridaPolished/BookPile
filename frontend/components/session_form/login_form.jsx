@@ -14,7 +14,7 @@ class LoginForm extends React.Component {
     }
 
     handleSubmit(e) {
-        debugger
+        
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.setState({ email: "", password: "", name: "" })
@@ -30,7 +30,7 @@ class LoginForm extends React.Component {
     renderErrors() {
         if (this.props.errors) {
             return (
-                <ul>
+                <ul id="errors">
                     {this.props.errors.map((error, i) => (
                         <li key={`error-${i}`}> {error} </li>
                     ))}
@@ -40,17 +40,17 @@ class LoginForm extends React.Component {
     }
 // 
     sampleUser(e) {
-        debugger
+        
         e.preventDefault();
-        let user = { email: "sample@user.com", password: "password"};
+        let user = { email: "sample@email.com", password: "password"};
         this.props.processForm(user);
     };
 
     render() {
        
         return (
-            <div className="login-form-container">
-                {this.renderErrors()}
+            <div>
+                <div className="login-form-container">
                 <form onSubmit={this.handleSubmit}>
                     <div className={`${this.props.formType}-form`}>
                         {name}
@@ -66,6 +66,8 @@ class LoginForm extends React.Component {
                         <div id="sampleuser" onClick={this.sampleUser}>Sample user</div>
                     </div>
                 </form>
+                </div>
+                {this.renderErrors()}
             </div>
         )
     }
