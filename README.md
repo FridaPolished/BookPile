@@ -1,16 +1,6 @@
 # BookPile
 
-----
-
-#About
-
-Bookpile is a web application inspired in [Goodreads](https://www.goodreads.com/) where users can create virtual bookshelves.
-
-#Live demo
-[Bookpile](https://bookpile.herokuapp.com/#/)
-
-
-#Technologies used
+ ## Technologies used
 
   Backend:
   * PostgresSQL database
@@ -19,9 +9,19 @@ Bookpile is a web application inspired in [Goodreads](https://www.goodreads.com/
   Frontend:
   * React-Redux
   * HTML /CSS
-  * AWS
+  * AWS 
 
-#Features
+---
+## About
+
+Bookpile is a web application inspired in [Goodreads](https://www.goodreads.com/) where users can create virtual bookshelves.
+
+## Live demo
+[Bookpile](https://bookpile.herokuapp.com/#/)
+
+
+
+## Features
 
   * User-Auth
     * Users can login or sign up.
@@ -47,7 +47,7 @@ Book index with buttons to add them directly to bookshelfs:
 Bookshelves index and show page:
 ![Bookshelves](app/assets/images/bookshelves.png)
 
-#Code Snippets
+## Code Snippets
 
 To keep a normalize State the Bookshelves controller retrieves all bookshelves
 that include that book through a custom query and renders a json a response the Reducer can interpret as bookshelves that include the book. This is stored inside of the book id and is later used as part of the checkboxes functionality.
