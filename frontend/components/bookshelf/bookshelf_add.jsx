@@ -57,7 +57,7 @@ class BookshelfAdd extends React.Component{
 
     return(
     <div className="dropdown-bookshelves">
-      <div className="dropdown-header" onClick={this.displayShelves}>Choose a shelf</div>
+      <div className="dropdown-header" onClick={this.displayShelves}>Want to read</div>
           <div style={style} className="dropdown-checkboxes"> 
             <ul>
               {bookshelves}
