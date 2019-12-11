@@ -50,3 +50,18 @@
 .title{
   margin-top: 30px;
 }
+
+.custom{
+     color: #775f4c !important;
+    background-color: #fffdf8 !important;
+    border: 8px solid;
+    width: 10;
+    height: 10;
+ &.place-top {
+ &:after {
+ border-top-color: orange !important;
+ border-top-style: solid !important;
+ border-top-width: 6px !important;
+ }
+}
+}

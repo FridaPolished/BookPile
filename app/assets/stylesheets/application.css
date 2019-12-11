@@ -14,7 +14,6 @@
  *= require_self
  */
 
-/* PHASE 0: Reset */
 
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
@@ -148,4 +147,8 @@ font-size: 13px;
     width: 146px;
 }
 
-
+.social {
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+}

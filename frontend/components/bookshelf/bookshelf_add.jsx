@@ -55,19 +55,21 @@ class BookshelfAdd extends React.Component{
       )
     })
 
-    return(
-    <div className="dropdown-bookshelves">
-      <div className="dropdown-header" onClick={this.displayShelves}>Want to read</div>
-          <div style={style} className="dropdown-checkboxes"> 
-            <ul>
-              {bookshelves}
-             </ul>
-            <div id='add-form'>
-              <BookshelfFormContainer  />
-            </div>
+    return (
+      <div className="dropdown-bookshelves">
+        <div className="dropdown-header" onClick={this.displayShelves}>
+          <div>
+            Want to read <i class="fas fa-sort-down fa-2x"></i>
           </div>
-    </div>
-    )
+        </div>
+        <div style={style} className="dropdown-checkboxes">
+          <ul>{bookshelves}</ul>
+          <div id="add-form">
+            <BookshelfFormContainer />
+          </div>
+        </div>
+      </div>
+    );
   }
 };
 
