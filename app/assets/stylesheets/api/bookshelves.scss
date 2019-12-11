@@ -163,7 +163,15 @@ border-radius: 3px;
   width: 110px;
   padding: 6px 0px 6px 8px;
   cursor: pointer;
-  margin-left: 64px;
+  margin-left: 94px;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 10px;
+}
+
+.dropdown-header i {
+  margin-top: -8px;
+  padding: 4px;
 }
 
 .book-detail .dropdown-header{
