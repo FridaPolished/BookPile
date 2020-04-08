@@ -16,7 +16,7 @@ class BookIndex extends React.Component {
      
     return (
         <div>
-            <h3>Book Index</h3>
+            <h3>All Books</h3>
             <section className="book-index">
                 {books.map(book => <BookIndexItem key={book.id} book={book} />)}
             </section>  

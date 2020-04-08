@@ -50,3 +50,34 @@
 .title{
   margin-top: 30px;
 }
+
+.custom{
+     color: #775f4c !important;
+    background-color: #fffdf8 !important;
+    border: 8px solid;
+    width: 10;
+    height: 10;
+ &.place-top {
+ &:after {
+ border-top-color: orange !important;
+ border-top-style: solid !important;
+ border-top-width: 6px !important;
+ }
+}
+}
+
+.s-paragraph {
+     width: 300px;
+     height: 100px;
+   //   white-space: nowrap;
+   //   overflow: hidden;
+   //   text-overflow: ellipsis;
+}
+
+.b-title {
+   font-weight: 700;
+}
+
+.continue {
+   font-style: italic;
+}

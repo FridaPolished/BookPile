@@ -14,10 +14,58 @@
  *= require_self
  */
 
+
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+input[type="password"],
+input[type="email"],
+input[type="text"],
+input[type="submit"],
+textarea,
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+
+
  body {
    font-family: 'Merriweather', serif;
    width: 100%;
-    margin: 0;
+   margin: 0;
+   height: 100%;
+   position: relative;
  }
 
 a {
@@ -31,6 +79,11 @@ a {
    display: block;
    margin-left: 5%;
    margin-right: 5%;
+   min-height: 100vh; /* will cover the 100% of viewport */
+   overflow: hidden;
+   display: block;
+    position: relative;
+   padding-bottom: 100px;
 }
 .navbar {
    display: flex;
@@ -101,4 +154,14 @@ font-size: 13px;
     width: 146px;
 }
 
+.social {
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+}
 
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
